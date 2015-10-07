@@ -1,6 +1,6 @@
 /* eslint react/self-closing-comp:0 */
 
-import React from 'react';
+import React, {Component} from 'react';
 
 import {
   Router, Route
@@ -24,11 +24,19 @@ import {
 }
 from './components/Page2.js';
 
-React.render((
-  <Router history={history}>
-    <Route component={RootComponent}>
-      <Route path="/page1" component={Page1}></Route>
-      <Route path="/page2" component={Page2}></Route>
-    </Route>
-  </Router>
-), document.body);
+export default class App extends Component {
+  render() {
+    return (
+      <div>
+        <Router history={history}>
+          <Route component={RootComponent}>
+            <Route path="/page1" component={Page1}></Route>
+            <Route path="/page2" component={Page2}></Route>
+          </Route>
+        </Router>
+      </div>
+    );
+  }
+}
+
+React.render(<App />, document.getElementById('content'));
